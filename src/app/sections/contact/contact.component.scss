@@ -1,0 +1,160 @@
+.contact-section {
+  padding-bottom: 4rem;
+}
+
+.contact-shell {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 1rem;
+  padding: clamp(1.3rem, 4vw, 2.4rem);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at 0 0, color-mix(in srgb, var(--accent) 13%, transparent), transparent 38%),
+    var(--surface);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-copy {
+  padding: clamp(0.3rem, 2vw, 1rem);
+
+  h2 {
+    max-width: 14ch;
+    margin-top: 0.55rem;
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.055em;
+  }
+
+  > p {
+    max-width: 40rem;
+    margin-top: 1rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+}
+
+.contact-list {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+
+  a,
+  div {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background: var(--surface-soft);
+  }
+
+  span {
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+
+  strong {
+    color: var(--text);
+    word-break: break-word;
+  }
+
+  a:hover {
+    border-color: color-mix(in srgb, var(--accent) 38%, var(--border));
+  }
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+
+  a {
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-soft);
+    background: var(--surface-soft);
+    font-size: 0.78rem;
+    font-weight: 750;
+
+    &:hover {
+      color: var(--accent-soft);
+    }
+  }
+}
+
+.contact-form {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 1.4rem;
+  background: var(--surface-strong);
+
+  label {
+    display: grid;
+    gap: 0.45rem;
+
+    > span {
+      color: var(--text-soft);
+      font-size: 0.8rem;
+      font-weight: 750;
+    }
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 0.9rem;
+    outline: none;
+    color: var(--text);
+    background: var(--surface-soft);
+    font: inherit;
+
+    &:focus {
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+  }
+
+  input {
+    min-height: 3rem;
+    padding: 0 0.9rem;
+  }
+
+  textarea {
+    min-height: 9rem;
+    padding: 0.85rem 0.9rem;
+    resize: vertical;
+  }
+
+  button {
+    justify-content: center;
+  }
+}
+
+.form-heading {
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+
+  > span {
+    color: var(--text);
+    font-weight: 850;
+  }
+
+  p {
+    margin-top: 0.3rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-shell {
+    grid-template-columns: 1fr;
+  }
+}

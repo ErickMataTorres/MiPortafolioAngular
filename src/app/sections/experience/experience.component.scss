@@ -1,0 +1,147 @@
+.experience-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2.2rem;
+}
+
+.experience-card {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  background: var(--surface);
+}
+
+.experience-aside {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.5rem 1rem;
+  border-right: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 10%, transparent), transparent),
+    var(--surface-soft);
+
+  img {
+    width: 4.4rem;
+    height: 4.4rem;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+}
+
+.experience-index {
+  color: var(--accent-soft);
+  font-family: var(--font-mono);
+  font-weight: 800;
+}
+
+.experience-content {
+  padding: clamp(1.3rem, 3vw, 2rem);
+}
+
+.experience-header,
+.role-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.experience-header h3 {
+  font-size: clamp(1.35rem, 2.3vw, 2rem);
+}
+
+.experience-location,
+.experience-summary {
+  color: var(--muted);
+}
+
+.experience-location {
+  margin-top: 0.25rem;
+  font-size: 0.88rem;
+}
+
+.experience-summary {
+  max-width: 70rem;
+  margin-top: 1rem;
+  line-height: 1.75;
+}
+
+.period-pill {
+  flex: 0 0 auto;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-soft);
+  background: var(--surface-soft);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.role-list {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1.35rem;
+}
+
+.role-item {
+  padding: 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface-soft);
+
+  h4 {
+    color: var(--text);
+    font-size: 1rem;
+  }
+
+  .role-heading > span {
+    color: var(--accent-soft);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  ul {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0.85rem 0 0;
+    padding-left: 1.15rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  li::marker {
+    color: var(--accent);
+  }
+}
+
+@media (max-width: 760px) {
+  .experience-card {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-aside {
+    align-items: center;
+    flex-direction: row;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .experience-aside img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .experience-header,
+  .role-heading {
+    flex-direction: column;
+  }
+
+  .role-item .role-heading > span {
+    text-align: left;
+  }
+}

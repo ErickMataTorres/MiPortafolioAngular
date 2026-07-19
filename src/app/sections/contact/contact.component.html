@@ -1,0 +1,99 @@
+<section id="contacto" class="section contact-section">
+  <div class="container">
+    <div class="contact-shell">
+      <div class="contact-copy">
+        <span class="section-kicker">{{ language.current() === 'es' ? 'Contacto' : 'Contact' }}</span>
+        <h2>
+          {{
+            language.current() === 'es'
+              ? 'Hablemos de una oportunidad o un proyecto.'
+              : 'Let’s discuss an opportunity or a project.'
+          }}
+        </h2>
+        <p>
+          {{
+            language.current() === 'es'
+              ? 'Estoy interesado en oportunidades de desarrollo de software, automatización y sistemas empresariales donde pueda aportar experiencia técnica y conocimiento de procesos.'
+              : 'I am interested in software development, automation, and business-system opportunities where I can contribute technical experience and process knowledge.'
+          }}
+        </p>
+
+        <div class="contact-list">
+          <a href="mailto:AProgramador102@outlook.com">
+            <span>{{ language.current() === 'es' ? 'Correo' : 'Email' }}</span>
+            <strong>AProgramador102&#64;outlook.com</strong>
+          </a>
+          <a href="tel:+526871264044">
+            <span>{{ language.current() === 'es' ? 'Teléfono / WhatsApp' : 'Phone / WhatsApp' }}</span>
+            <strong>+52 687 126 4044</strong>
+          </a>
+          <div>
+            <span>{{ language.current() === 'es' ? 'Ubicación' : 'Location' }}</span>
+            <strong>Guasave, Sinaloa, México</strong>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/erickmatatorres/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a href="https://github.com/ErickMataTorres" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="https://maxsoftmexico.com" target="_blank" rel="noreferrer">MaxSoft México ↗</a>
+        </div>
+      </div>
+
+      <form #contactForm="ngForm" class="contact-form" (ngSubmit)="sendMessage(contactForm)" novalidate>
+        <div class="form-heading">
+          <span>{{ language.current() === 'es' ? 'Mensaje directo' : 'Direct message' }}</span>
+          <p>
+            {{
+              language.current() === 'es'
+                ? 'El formulario abrirá tu aplicación de correo con el mensaje preparado.'
+                : 'The form will open your email application with the message prepared.'
+            }}
+          </p>
+        </div>
+
+        <label>
+          <span>{{ language.current() === 'es' ? 'Nombre' : 'Name' }}</span>
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="model.name"
+            required
+            minlength="2"
+            autocomplete="name"
+            [placeholder]="language.current() === 'es' ? 'Tu nombre' : 'Your name'"
+          >
+        </label>
+
+        <label>
+          <span>{{ language.current() === 'es' ? 'Correo' : 'Email' }}</span>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="model.email"
+            required
+            email
+            autocomplete="email"
+            placeholder="correo@ejemplo.com"
+          >
+        </label>
+
+        <label>
+          <span>{{ language.current() === 'es' ? 'Mensaje' : 'Message' }}</span>
+          <textarea
+            name="message"
+            [(ngModel)]="model.message"
+            required
+            minlength="10"
+            [placeholder]="language.current() === 'es' ? 'Cuéntame sobre la oportunidad o proyecto...' : 'Tell me about the opportunity or project...'"
+          ></textarea>
+        </label>
+
+        <button type="submit" class="button button--primary">
+          {{ language.current() === 'es' ? 'Preparar correo' : 'Prepare email' }}
+          <span aria-hidden="true">→</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

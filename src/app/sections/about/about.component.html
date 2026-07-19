@@ -1,0 +1,78 @@
+<section id="perfil" class="section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-kicker">{{ language.current() === 'es' ? 'Perfil profesional' : 'Professional profile' }}</span>
+      <h2>
+        {{
+          language.current() === 'es'
+            ? 'Tecnología conectada con la operación real.'
+            : 'Technology connected to real operations.'
+        }}
+      </h2>
+      <p>
+        {{
+          language.current() === 'es'
+            ? 'Mi perfil combina desarrollo de software, análisis de procesos, experiencia industrial y crecimiento en liderazgo. Esto me permite comprender el problema antes de escribir código y diseñar herramientas que realmente se utilicen.'
+            : 'My profile combines software development, process analysis, industrial experience, and leadership growth. This allows me to understand the problem before writing code and design tools that people actually use.'
+        }}
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <article class="content-card content-card--large">
+        <span class="content-card-number">01</span>
+        <h3>{{ language.current() === 'es' ? 'Cómo trabajo' : 'How I work' }}</h3>
+        <p>
+          {{
+            language.current() === 'es'
+              ? 'Analizo el flujo actual, identifico riesgos y tareas repetitivas, modelo la información y después construyo una solución clara, mantenible y preparada para evolucionar.'
+              : 'I analyze the current workflow, identify risks and repetitive tasks, model the information, and then build a clear, maintainable solution prepared to evolve.'
+          }}
+        </p>
+
+        <div class="process-list">
+          <div>
+            <strong>{{ language.current() === 'es' ? 'Entender' : 'Understand' }}</strong>
+            <span>{{ language.current() === 'es' ? 'Proceso, usuarios, restricciones y objetivo.' : 'Process, users, constraints, and goal.' }}</span>
+          </div>
+          <div>
+            <strong>{{ language.current() === 'es' ? 'Diseñar' : 'Design' }}</strong>
+            <span>{{ language.current() === 'es' ? 'Datos, arquitectura, interfaz y reglas.' : 'Data, architecture, interface, and rules.' }}</span>
+          </div>
+          <div>
+            <strong>{{ language.current() === 'es' ? 'Construir' : 'Build' }}</strong>
+            <span>{{ language.current() === 'es' ? 'Una solución funcional, visual y verificable.' : 'A functional, visual, and verifiable solution.' }}</span>
+          </div>
+          <div>
+            <strong>{{ language.current() === 'es' ? 'Mejorar' : 'Improve' }}</strong>
+            <span>{{ language.current() === 'es' ? 'Medir resultados y preparar la siguiente versión.' : 'Measure outcomes and prepare the next version.' }}</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="content-card">
+        <span class="content-card-number">02</span>
+        <h3>{{ language.current() === 'es' ? 'Mi diferencial' : 'My differentiator' }}</h3>
+        <p>
+          {{
+            language.current() === 'es'
+              ? 'No separo el software del proceso. Puedo conversar con usuarios operativos, traducir necesidades a reglas de negocio y construir desde la interfaz hasta la persistencia de datos.'
+              : 'I do not separate software from the process. I can talk with operational users, translate needs into business rules, and build from the interface through data persistence.'
+          }}
+        </p>
+      </article>
+
+      <article class="content-card">
+        <span class="content-card-number">03</span>
+        <h3>{{ language.current() === 'es' ? 'Objetivo profesional' : 'Professional goal' }}</h3>
+        <p>
+          {{
+            language.current() === 'es'
+              ? 'Continuar creciendo en desarrollo Full Stack, backend con .NET, Angular, bases de datos, automatización y soluciones empresariales con impacto medible.'
+              : 'Continue growing in Full Stack development, .NET backend, Angular, databases, automation, and business solutions with measurable impact.'
+          }}
+        </p>
+      </article>
+    </div>
+  </div>
+</section>

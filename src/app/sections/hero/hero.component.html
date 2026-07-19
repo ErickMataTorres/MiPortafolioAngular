@@ -1,0 +1,103 @@
+<section id="inicio" class="hero section">
+  <div class="hero-orb hero-orb--one" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb--two" aria-hidden="true"></div>
+
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">
+        <span class="status-dot"></span>
+        {{
+          language.current() === 'es'
+            ? 'Disponible para oportunidades de desarrollo de software'
+            : 'Open to software development opportunities'
+        }}
+      </span>
+
+      <h1>
+        {{
+          language.current() === 'es'
+            ? 'Convierto procesos reales en soluciones digitales.'
+            : 'I turn real processes into digital solutions.'
+        }}
+      </h1>
+
+      <p class="hero-role">
+        {{
+          language.current() === 'es'
+            ? 'Desarrollador Full Stack · C# · .NET · Angular · SQL · Automatización'
+            : 'Full Stack Developer · C# · .NET · Angular · SQL · Automation'
+        }}
+      </p>
+
+      <p class="hero-summary">
+        {{
+          language.current() === 'es'
+            ? 'Soy Erick Mata Torres, Licenciado en Sistemas Computacionales y Supervisor de Aseguranza con experiencia construyendo aplicaciones web, sistemas de escritorio, bases de datos y automatizaciones que mejoran el control, la trazabilidad y la productividad.'
+            : 'I am Erick Mata Torres, a Computer Systems graduate and Quality Assurance Supervisor with experience building web applications, desktop systems, databases, and automations that improve control, traceability, and productivity.'
+        }}
+      </p>
+
+      <div class="hero-actions">
+        <a class="button button--primary" href="#proyectos">
+          {{ language.current() === 'es' ? 'Explorar proyectos' : 'Explore projects' }}
+          <span aria-hidden="true">→</span>
+        </a>
+        <a class="button button--secondary" href="#contacto">
+          {{ language.current() === 'es' ? 'Contactarme' : 'Contact me' }}
+        </a>
+        <span class="button button--disabled" aria-disabled="true">
+          {{ language.current() === 'es' ? 'CV actualizado · en preparación' : 'Updated résumé · in progress' }}
+        </span>
+      </div>
+
+      <div class="metrics" aria-label="Resumen profesional">
+        @for (metric of metrics; track metric.value) {
+          <article class="metric-card">
+            <strong>{{ metric.value }}</strong>
+            <span>{{ language.text(metric.label) }}</span>
+          </article>
+        }
+      </div>
+    </div>
+
+    <aside class="profile-card">
+      <div class="profile-image-shell">
+        <img
+          src="assets/images/profile.webp"
+          alt="Fotografía profesional de Erick Mata Torres"
+          width="520"
+          height="520"
+        >
+        <span class="profile-status">
+          <span></span>
+          {{ language.current() === 'es' ? 'Guasave, Sinaloa' : 'Guasave, Sinaloa' }}
+        </span>
+      </div>
+
+      <div class="profile-card-copy">
+        <span class="card-label">{{ language.current() === 'es' ? 'Perfil actual' : 'Current profile' }}</span>
+        <h2>Erick Mata Torres</h2>
+        <p>
+          {{
+            language.current() === 'es'
+              ? 'Perfil técnico con experiencia operativa, liderazgo progresivo y enfoque en sistemas empresariales.'
+              : 'Technical profile with operational experience, progressive leadership, and a focus on business systems.'
+          }}
+        </p>
+
+        <div class="code-window" aria-label="Resumen técnico">
+          <div class="code-window-bar" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <code>
+            <span class="code-keyword">const</span> profile = {{ '{' }}<br>
+            &nbsp;&nbsp;focus: <span class="code-string">'useful software'</span>,<br>
+            &nbsp;&nbsp;stack: [<span class="code-string">'C#'</span>, <span class="code-string">'Angular'</span>, <span class="code-string">'SQL'</span>],<br>
+            &nbsp;&nbsp;mindset: <span class="code-string">'continuous improvement'</span><br>
+            {{ '}' }};
+          </code>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

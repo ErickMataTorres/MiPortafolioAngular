@@ -1,0 +1,65 @@
+<section id="experiencia" class="section section--alternate">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-kicker">{{ language.current() === 'es' ? 'Trayectoria' : 'Career path' }}</span>
+      <h2>{{ language.current() === 'es' ? 'Experiencia con crecimiento comprobable.' : 'Experience with measurable growth.' }}</h2>
+      <p>
+        {{
+          language.current() === 'es'
+            ? 'Mi trayectoria conecta desarrollo, soporte, manufactura, calidad y liderazgo. En Contec avancé por tres posiciones mediante promociones internas.'
+            : 'My career connects development, support, manufacturing, quality, and leadership. At Contec, I progressed through three roles by internal promotion.'
+        }}
+      </p>
+    </div>
+
+    <div class="experience-list">
+      @for (experience of experiences; track experience.company; let index = $index) {
+        <article class="experience-card">
+          <div class="experience-aside">
+            <span class="experience-index">{{ (index + 1).toString().padStart(2, '0') }}</span>
+            @if (experience.logo) {
+              <img [src]="experience.logo" [alt]="'Logo ' + experience.company" width="120" height="120">
+            }
+          </div>
+
+          <div class="experience-content">
+            <div class="experience-header">
+              <div>
+                <h3>{{ experience.company }}</h3>
+                @if (experience.location) {
+                  <p class="experience-location">{{ language.text(experience.location) }}</p>
+                }
+              </div>
+              <span class="period-pill">{{ language.text(experience.period) }}</span>
+            </div>
+
+            <p class="experience-summary">{{ language.text(experience.summary) }}</p>
+
+            <div class="role-list">
+              @for (role of experience.roles; track language.text(role.title)) {
+                <div class="role-item">
+                  <div class="role-heading">
+                    <h4>{{ language.text(role.title) }}</h4>
+                    <span>{{ language.text(role.period) }}</span>
+                  </div>
+
+                  <ul>
+                    @for (responsibility of role.responsibilities; track language.text(responsibility)) {
+                      <li>{{ language.text(responsibility) }}</li>
+                    }
+                  </ul>
+                </div>
+              }
+            </div>
+
+            <div class="tag-list" aria-label="Tecnologías y capacidades">
+              @for (tag of experience.tags; track tag) {
+                <span>{{ tag }}</span>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

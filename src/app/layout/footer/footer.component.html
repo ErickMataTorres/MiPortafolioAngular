@@ -1,0 +1,20 @@
+<footer class="site-footer">
+  <div class="container footer-shell">
+    <div>
+      <strong>Erick Mata Torres</strong>
+      <p>
+        {{
+          language.current() === 'es'
+            ? 'Desarrollo de software · Automatización · Sistemas empresariales'
+            : 'Software development · Automation · Business systems'
+        }}
+      </p>
+    </div>
+
+    <div class="footer-meta">
+      <span>Angular 22 · TypeScript · SCSS</span>
+      <span>© {{ currentYear }}</span>
+      <a href="#inicio">{{ language.current() === 'es' ? 'Volver arriba ↑' : 'Back to top ↑' }}</a>
+    </div>
+  </div>
+</footer>

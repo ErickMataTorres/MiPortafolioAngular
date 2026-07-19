@@ -1,0 +1,31 @@
+<section id="tecnologias" class="section section--alternate">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-kicker">{{ language.current() === 'es' ? 'Tecnologías' : 'Technology stack' }}</span>
+      <h2>{{ language.current() === 'es' ? 'Herramientas para construir de punta a punta.' : 'Tools for building end to end.' }}</h2>
+      <p>
+        {{
+          language.current() === 'es'
+            ? 'El stack refleja tecnologías utilizadas en proyectos, prototipos, herramientas internas y aprendizaje continuo.'
+            : 'The stack reflects technologies used in projects, prototypes, internal tools, and continuous learning.'
+        }}
+      </p>
+    </div>
+
+    <div class="skills-grid">
+      @for (group of skillGroups; track language.text(group.title); let index = $index) {
+        <article class="skill-card">
+          <span class="skill-index">{{ (index + 1).toString().padStart(2, '0') }}</span>
+          <h3>{{ language.text(group.title) }}</h3>
+          <p>{{ language.text(group.description) }}</p>
+
+          <div class="tag-list">
+            @for (item of group.items; track item) {
+              <span>{{ item }}</span>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

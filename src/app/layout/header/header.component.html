@@ -1,0 +1,57 @@
+<header class="site-header">
+  <div class="container header-shell">
+    <a class="brand" href="#inicio" (click)="closeMenu()" aria-label="Ir al inicio">
+      <span class="brand-mark">EM</span>
+      <span class="brand-copy">
+        <strong>Erick Mata Torres</strong>
+        <small>{{ language.current() === 'es' ? 'Desarrollador de Software' : 'Software Developer' }}</small>
+      </span>
+    </a>
+
+    <button
+      type="button"
+      class="menu-button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="main-navigation"
+      [attr.aria-label]="language.current() === 'es' ? 'Abrir menú' : 'Open menu'"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav
+      id="main-navigation"
+      class="navigation"
+      [class.navigation--open]="menuOpen()"
+      [attr.aria-label]="language.current() === 'es' ? 'Navegación principal' : 'Main navigation'"
+    >
+      @for (item of navigationItems; track item.id) {
+        <a [href]="'#' + item.id" (click)="closeMenu()">
+          {{ language.text(item.label) }}
+        </a>
+      }
+
+      <div class="header-actions">
+        <button
+          type="button"
+          class="icon-button language-button"
+          (click)="language.toggle()"
+          [attr.aria-label]="language.current() === 'es' ? 'Cambiar a inglés' : 'Switch to Spanish'"
+          [title]="language.current() === 'es' ? 'Cambiar a inglés' : 'Cambiar a español'"
+        >
+          {{ language.current() === 'es' ? 'EN' : 'ES' }}
+        </button>
+
+        <button
+          type="button"
+          class="icon-button"
+          (click)="theme.toggle()"
+          [attr.aria-label]="language.current() === 'es' ? 'Cambiar tema' : 'Change theme'"
+          [title]="language.current() === 'es' ? 'Cambiar tema' : 'Change theme'"
+        >
+          {{ theme.current() === 'dark' ? '☀' : '☾' }}
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>

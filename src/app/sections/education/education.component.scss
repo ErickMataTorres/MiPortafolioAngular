@@ -1,0 +1,106 @@
+.education-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 1rem;
+  margin-top: 2.2rem;
+}
+
+.education-card,
+.languages-card {
+  height: 100%;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  background: var(--surface);
+}
+
+.education-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+
+  h3 {
+    margin-top: 0.5rem;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+  }
+
+  strong {
+    display: block;
+    margin-top: 0.45rem;
+    color: var(--text-soft);
+  }
+
+  p {
+    margin-top: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .education-period {
+    margin-top: 0.35rem;
+    color: var(--accent-soft);
+    font-size: 0.85rem;
+    font-weight: 800;
+  }
+}
+
+.education-icon {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  color: var(--accent-soft);
+  background: var(--surface-soft);
+  font-size: 1.4rem;
+}
+
+.education-label {
+  color: var(--accent-soft);
+  font-size: 0.75rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.language-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.3rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  strong {
+    color: var(--text);
+  }
+
+  span {
+    color: var(--muted);
+    text-align: right;
+  }
+}
+
+.languages-card > p {
+  margin-top: 1.2rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 820px) {
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .education-card {
+    grid-template-columns: 1fr;
+  }
+}

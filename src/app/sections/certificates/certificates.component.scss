@@ -1,0 +1,55 @@
+.pending-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.2rem;
+  align-items: center;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  border: 1px dashed color-mix(in srgb, var(--accent) 45%, var(--border));
+  border-radius: 1.5rem;
+  background: color-mix(in srgb, var(--accent) 5%, var(--surface));
+
+  h2 {
+    margin-top: 0.4rem;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  p {
+    max-width: 55rem;
+    margin-top: 0.6rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+}
+
+.pending-icon {
+  width: 3.4rem;
+  height: 3.4rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  color: var(--accent-soft);
+  background: var(--surface-soft);
+  font-size: 1.8rem;
+}
+
+.pending-status {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--warning);
+  background: var(--surface-soft);
+  font-size: 0.76rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .pending-card {
+    grid-template-columns: 1fr;
+  }
+
+  .pending-status {
+    width: fit-content;
+  }
+}

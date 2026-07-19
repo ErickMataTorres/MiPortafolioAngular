@@ -1,0 +1,25 @@
+<section class="section section--compact section--alternate">
+  <div class="container">
+    <article class="pending-card">
+      <div class="pending-icon" aria-hidden="true">+</div>
+      <div>
+        <span class="section-kicker">{{ language.current() === 'es' ? 'Certificados y cursos' : 'Certificates and courses' }}</span>
+        <h2>
+          {{
+            language.current() === 'es'
+              ? 'Sección preparada para incorporar evidencias.'
+              : 'Section prepared to add supporting evidence.'
+          }}
+        </h2>
+        <p>
+          {{
+            language.current() === 'es'
+              ? 'Los certificados, cursos y constancias se agregarán conforme sean seleccionados y digitalizados. La sección se conserva para no excluir esta parte del perfil profesional.'
+              : 'Certificates, courses, and supporting documents will be added as they are selected and digitized. The section remains visible so this part of the professional profile is not excluded.'
+          }}
+        </p>
+      </div>
+      <span class="pending-status">{{ language.current() === 'es' ? 'Documentación pendiente' : 'Documentation pending' }}</span>
+    </article>
+  </div>
+</section>
