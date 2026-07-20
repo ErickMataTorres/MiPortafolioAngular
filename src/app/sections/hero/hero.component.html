@@ -51,8 +51,15 @@
           {{ language.current() === 'es' ? 'Contactarme' : 'Contact me' }}
         </a>
 
-        <a class="button button--secondary" href="assets/documents/Erick-Mata-Torres-CV-Desarrollador-Software.pdf"
-          download="Erick-Mata-Torres-CV-Desarrollador-Software.pdf">
+        <a class="button button--secondary" [href]="
+    language.current() === 'es'
+      ? 'assets/documents/Erick-Mata-Torres-CV-Desarrollador-Software-ES.pdf'
+      : 'assets/documents/Erick-Mata-Torres-CV-Software-Developer-EN.pdf'
+  " [attr.download]="
+    language.current() === 'es'
+      ? 'Erick-Mata-Torres-CV-Desarrollador-Software-ES.pdf'
+      : 'Erick-Mata-Torres-CV-Software-Developer-EN.pdf'
+  ">
           {{
           language.current() === 'es'
           ? 'Descargar CV'
@@ -60,8 +67,15 @@
           }}
         </a>
 
-        <a class="button button--secondary" href="assets/documents/Erick-Mata-Torres-CV-ATS.pdf"
-          download="Erick-Mata-Torres-CV-ATS.pdf">
+        <a class="button button--secondary" [href]="
+    language.current() === 'es'
+      ? 'assets/documents/Erick-Mata-Torres-CV-ATS-ES.pdf'
+      : 'assets/documents/Erick-Mata-Torres-CV-ATS-EN.pdf'
+  " [attr.download]="
+    language.current() === 'es'
+      ? 'Erick-Mata-Torres-CV-ATS-ES.pdf'
+      : 'Erick-Mata-Torres-CV-ATS-EN.pdf'
+  ">
           {{
           language.current() === 'es'
           ? 'Descargar CV ATS'
