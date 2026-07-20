@@ -2,9 +2,23 @@
   <div class="container">
     <div class="section-heading section-heading--split">
       <div>
-        <span class="section-kicker">{{ language.current() === 'es' ? 'Proyectos' : 'Projects' }}</span>
-        <h2>{{ language.current() === 'es' ? 'Sistemas pensados para resolver problemas reales.' : 'Systems designed to solve real problems.' }}</h2>
+        <span class="section-kicker">
+          {{
+            language.current() === 'es'
+              ? 'Proyectos'
+              : 'Projects'
+          }}
+        </span>
+
+        <h2>
+          {{
+            language.current() === 'es'
+              ? 'Sistemas pensados para resolver problemas reales.'
+              : 'Systems designed to solve real problems.'
+          }}
+        </h2>
       </div>
+
       <p>
         {{
           language.current() === 'es'
@@ -14,7 +28,15 @@
       </p>
     </div>
 
-    <div class="filter-bar" role="group" [attr.aria-label]="language.current() === 'es' ? 'Filtrar proyectos' : 'Filter projects'">
+    <div
+      class="filter-bar"
+      role="group"
+      [attr.aria-label]="
+        language.current() === 'es'
+          ? 'Filtrar proyectos'
+          : 'Filter projects'
+      "
+    >
       @for (category of categories; track category.value) {
         <button
           type="button"
@@ -26,62 +48,204 @@
       }
     </div>
 
-    <div class="projects-grid">
-      @for (project of visibleProjects(); track project.slug) {
-        <article class="project-card" [class.project-card--featured]="project.featured">
-          <div class="project-visual" [attr.data-project]="project.slug">
-            <span class="project-number">{{ ($index + 1).toString().padStart(2, '0') }}</span>
-            <div class="project-visual-lines" aria-hidden="true">
-              <span></span><span></span><span></span>
+    <div class="project-groups">
+      @for (group of projectGroups(); track group.key) {
+        @if (group.projects.length > 0) {
+          <section
+            class="project-group"
+            [class.project-group--featured]="group.key === 'featured'"
+          >
+            <div class="project-group-heading">
+              <div>
+                <span>
+                  {{
+                    group.key === 'featured'
+                      ? (
+                          language.current() === 'es'
+                            ? 'Selección principal'
+                            : 'Main selection'
+                        )
+                      : (
+                          language.current() === 'es'
+                            ? 'Más proyectos'
+                            : 'More projects'
+                        )
+                  }}
+                </span>
+
+                <h3>
+                  {{
+                    group.key === 'featured'
+                      ? (
+                          language.current() === 'es'
+                            ? 'Proyectos destacados'
+                            : 'Featured projects'
+                        )
+                      : (
+                          language.current() === 'es'
+                            ? 'Proyectos adicionales'
+                            : 'Additional projects'
+                        )
+                  }}
+                </h3>
+              </div>
+
+              <p>
+                {{
+                  group.key === 'featured'
+                    ? (
+                        language.current() === 'es'
+                          ? 'Los sistemas que mejor representan mi experiencia actual en desarrollo, automatización y solución de problemas reales.'
+                          : 'The systems that best represent my current experience in development, automation, and real-world problem solving.'
+                      )
+                    : (
+                        language.current() === 'es'
+                          ? 'Otros sistemas, prototipos y soluciones que forman parte de mi trayectoria técnica.'
+                          : 'Other systems, prototypes, and solutions that are part of my technical background.'
+                      )
+                }}
+              </p>
             </div>
-            @if (project.featured) {
-              <span class="featured-label">{{ language.current() === 'es' ? 'Destacado' : 'Featured' }}</span>
-            }
-          </div>
 
-          <div class="project-body">
-            <div class="project-meta">
-              <span class="status-badge" [attr.data-status]="project.status">
-                {{ statusLabel(project.status) }}
-              </span>
-              <span>{{ project.categories.join(' · ') }}</span>
-            </div>
+            <div
+              class="projects-grid"
+              [class.projects-grid--featured]="group.key === 'featured'"
+              [class.projects-grid--additional]="group.key === 'additional'"
+            >
+              @for (project of group.projects; track project.slug) {
+                <article
+                  class="project-card"
+                  [class.project-card--featured]="project.featured"
+                >
+                  <div
+                    class="project-visual"
+                    [attr.data-project]="project.slug"
+                  >
+                    <span class="project-number">
+                      {{ projectNumber(project) }}
+                    </span>
 
-            <h3>{{ language.text(project.title) }}</h3>
-            <p>{{ language.text(project.shortDescription) }}</p>
+                    <div
+                      class="project-visual-lines"
+                      aria-hidden="true"
+                    >
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
 
-            <div class="resource-notices">
-              <span>◫ {{ language.text(project.resourceStatus.screenshots) }}</span>
-              <span>⌘ {{ language.text(project.resourceStatus.repository) }}</span>
-            </div>
+                    @if (project.featured) {
+                      <span class="featured-label">
+                        {{
+                          language.current() === 'es'
+                            ? 'Destacado'
+                            : 'Featured'
+                        }}
+                      </span>
+                    }
+                  </div>
 
-            <div class="technology-list">
-              @for (technology of project.technologies.slice(0, 5); track technology) {
-                <span>{{ technology }}</span>
+                  <div class="project-body">
+                    <div class="project-meta">
+                      <span
+                        class="status-badge"
+                        [attr.data-status]="project.status"
+                      >
+                        {{ statusLabel(project.status) }}
+                      </span>
+
+                      <span>
+                        {{ project.categories.join(' · ') }}
+                      </span>
+                    </div>
+
+                    <h3>
+                      {{ language.text(project.title) }}
+                    </h3>
+
+                    <p>
+                      {{ language.text(project.shortDescription) }}
+                    </p>
+
+                    <div class="resource-notices">
+                      <span>
+                        ◫
+                        {{
+                          language.text(
+                            project.resourceStatus.screenshots
+                          )
+                        }}
+                      </span>
+
+                      <span>
+                        ⌘
+                        {{
+                          language.text(
+                            project.resourceStatus.repository
+                          )
+                        }}
+                      </span>
+                    </div>
+
+                    <div class="technology-list">
+                      @for (
+                        technology of project.technologies.slice(0, 5);
+                        track technology
+                      ) {
+                        <span>
+                          {{ technology }}
+                        </span>
+                      }
+                    </div>
+
+                    <div class="project-actions">
+                      <button
+                        type="button"
+                        class="text-button"
+                        (click)="openProject(project)"
+                      >
+                        {{
+                          language.current() === 'es'
+                            ? 'Ver caso de estudio'
+                            : 'View case study'
+                        }}
+
+                        <span aria-hidden="true">→</span>
+                      </button>
+
+                      @if (project.liveUrl) {
+                        <a
+                          class="external-link"
+                          [href]="project.liveUrl"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {{
+                            language.current() === 'es'
+                              ? 'Ver sitio'
+                              : 'View site'
+                          }}
+                          ↗
+                        </a>
+                      }
+                    </div>
+                  </div>
+                </article>
               }
             </div>
-
-            <div class="project-actions">
-              <button type="button" class="text-button" (click)="openProject(project)">
-                {{ language.current() === 'es' ? 'Ver caso de estudio' : 'View case study' }}
-                <span aria-hidden="true">→</span>
-              </button>
-
-              @if (project.liveUrl) {
-                <a class="external-link" [href]="project.liveUrl" target="_blank" rel="noreferrer">
-                  {{ language.current() === 'es' ? 'Ver sitio' : 'View site' }} ↗
-                </a>
-              }
-            </div>
-          </div>
-        </article>
+          </section>
+        }
       }
     </div>
   </div>
 </section>
 
 @if (selectedProject(); as project) {
-  <div class="modal-backdrop" (click)="closeProject()" role="presentation">
+  <div
+    class="modal-backdrop"
+    role="presentation"
+    (click)="closeProject()"
+  >
     <section
       class="project-modal"
       role="dialog"
@@ -93,48 +257,125 @@
         type="button"
         class="modal-close"
         (click)="closeProject()"
-        [attr.aria-label]="language.current() === 'es' ? 'Cerrar' : 'Close'"
+        [attr.aria-label]="
+          language.current() === 'es'
+            ? 'Cerrar'
+            : 'Close'
+        "
       >
         ×
       </button>
 
-      <span class="status-badge" [attr.data-status]="project.status">{{ statusLabel(project.status) }}</span>
-      <h2>{{ language.text(project.title) }}</h2>
-      <p class="modal-intro">{{ language.text(project.shortDescription) }}</p>
+      <span
+        class="status-badge"
+        [attr.data-status]="project.status"
+      >
+        {{ statusLabel(project.status) }}
+      </span>
+
+      <h2>
+        {{ language.text(project.title) }}
+      </h2>
+
+      <p class="modal-intro">
+        {{ language.text(project.shortDescription) }}
+      </p>
 
       <div class="modal-section">
-        <span>{{ language.current() === 'es' ? 'Problema' : 'Problem' }}</span>
-        <p>{{ language.text(project.problem) }}</p>
+        <span>
+          {{
+            language.current() === 'es'
+              ? 'Problema'
+              : 'Problem'
+          }}
+        </span>
+
+        <p>
+          {{ language.text(project.problem) }}
+        </p>
       </div>
 
       <div class="modal-section">
-        <span>{{ language.current() === 'es' ? 'Solución' : 'Solution' }}</span>
-        <p>{{ language.text(project.solution) }}</p>
+        <span>
+          {{
+            language.current() === 'es'
+              ? 'Solución'
+              : 'Solution'
+          }}
+        </span>
+
+        <p>
+          {{ language.text(project.solution) }}
+        </p>
       </div>
 
       <div class="modal-section">
-        <span>{{ language.current() === 'es' ? 'Aspectos principales' : 'Key highlights' }}</span>
+        <span>
+          {{
+            language.current() === 'es'
+              ? 'Aspectos principales'
+              : 'Key highlights'
+          }}
+        </span>
+
         <ul>
-          @for (highlight of project.highlights; track language.text(highlight)) {
-            <li>{{ language.text(highlight) }}</li>
+          @for (
+            highlight of project.highlights;
+            track language.text(highlight)
+          ) {
+            <li>
+              {{ language.text(highlight) }}
+            </li>
           }
         </ul>
       </div>
 
       <div class="technology-list">
-        @for (technology of project.technologies; track technology) {
-          <span>{{ technology }}</span>
+        @for (
+          technology of project.technologies;
+          track technology
+        ) {
+          <span>
+            {{ technology }}
+          </span>
         }
       </div>
 
       <div class="modal-resource-grid">
         <div>
-          <strong>{{ language.current() === 'es' ? 'Capturas' : 'Screenshots' }}</strong>
-          <span>{{ language.text(project.resourceStatus.screenshots) }}</span>
+          <strong>
+            {{
+              language.current() === 'es'
+                ? 'Capturas'
+                : 'Screenshots'
+            }}
+          </strong>
+
+          <span>
+            {{
+              language.text(
+                project.resourceStatus.screenshots
+              )
+            }}
+          </span>
         </div>
+
         <div>
-          <strong>{{ language.current() === 'es' ? 'Código' : 'Code' }}</strong>
-          <span>{{ language.text(project.resourceStatus.repository) }}</span>
+          <strong>
+            {{
+              language.current() === 'es'
+                ? 'Código'
+                : 'Code'
+            }}
+          </strong>
+
+          <span>
+            {{
+              language.text(
+                project.resourceStatus.repository
+              )
+            }}
+          </span>
         </div>
       </div>
     </section>
