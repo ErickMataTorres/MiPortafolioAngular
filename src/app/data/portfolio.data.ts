@@ -34,10 +34,10 @@ export const HERO_METRICS: readonly Metric[] = [
     }
   },
   {
-    value: '8',
+    value: '4',
     label: {
-      es: 'proyectos destacados documentados',
-      en: 'documented featured projects'
+      es: 'proyectos principales documentados',
+      en: 'documented core projects'
     }
   },
   {
@@ -393,7 +393,8 @@ export const PROJECTS: readonly Project[] = [
     technologies: ['ASP.NET', 'Angular', 'SQL Server', 'JavaScript', 'PDF', 'Excel'],
     categories: ['web'],
     status: 'completed',
-    resourceStatus: pendingResources
+    resourceStatus: pendingResources,
+    featured: true
   },
   {
     slug: 'inventory-pos-system',

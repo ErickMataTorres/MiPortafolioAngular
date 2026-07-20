@@ -29,12 +29,21 @@ export class ProjectsComponent {
   protected readonly visibleProjects = computed(() => {
     const activeCategory = this.activeCategory();
 
-    return activeCategory === 'all'
-      ? PROJECTS
-      : PROJECTS.filter((project) => project.categories.includes(activeCategory));
+    const filteredProjects =
+      activeCategory === 'all'
+        ? PROJECTS
+        : PROJECTS.filter((project) =>
+          project.categories.includes(activeCategory)
+        );
+
+    return [...filteredProjects].sort(
+      (firstProject, secondProject) =>
+        Number(Boolean(secondProject.featured)) -
+        Number(Boolean(firstProject.featured))
+    );
   });
 
-  constructor(protected readonly language: LanguageService) {}
+  constructor(protected readonly language: LanguageService) { }
 
   protected selectCategory(category: ProjectCategory): void {
     this.activeCategory.set(category);
